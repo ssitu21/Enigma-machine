@@ -93,3 +93,7 @@ def main():
 # Run the program
 if __name__ == "__main__":
     main()
+
+    print("===========================")
+    print(" ENIGMA MACHINE SIMULATOR ")
+    print("===========================")

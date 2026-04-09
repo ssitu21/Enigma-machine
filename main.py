@@ -35,6 +35,29 @@ def encrypt(message_list, shift):
     return "".join(result)
 
 
+# Function to decrypt message
+def decrypt(message_list, shift):
+    result = []
+
+    for char in message_list:
+
+        if char.isalpha():
+
+            new_char = chr(ord(char) - shift)
+
+            if char.islower() and new_char < "a":
+                new_char = chr(ord(new_char) + 26)
+            elif char.isupper() and new_char < "A":
+                new_char = chr(ord(new_char) + 26)
+
+            result.append(new_char)
+
+        else:
+            result.append(char)
+
+    return "".join(result)
+
+
 # Main program
 def main():
 
