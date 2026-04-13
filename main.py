@@ -65,6 +65,33 @@ def main():
     print(" ENIGMA MACHINE SIMULATOR ")
     print("===========================")
 
+    while True:
+
+        choice = input("\nEncrypt or Decrypt? (e/d): ").lower().strip()
+
+        if choice not in ["e", "d"]:
+            print("Invalid choice. Try again.")
+            continue
+
+        message = input("Enter your message: ")
+        message = format_text(message)
+
+        message_list = list(message)
+
+        shift = input("Enter shift number (e.g. 3): ").strip()
+        shift = int(shift)
+
+        # Call correct function
+        if choice == "e":
+            result = encrypt(message_list, shift)
+            print("\nEncrypted message:")
+            print(result)
+
+        else:
+            result = decrypt(message_list, shift)
+            print("\nDecrypted message:")
+            print(result)
+
 
 # Run the program
 if __name__ == "__main__":
