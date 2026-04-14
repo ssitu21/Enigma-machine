@@ -8,7 +8,54 @@ def format_text(text):
     return text.strip()
 
 
-# Function to encrypt message
+# Function to create cipher dictionaries
+def create_cipher_dict(shift):
+    """Creates dictionary mapping for Caesar cipher"""
+    encrypt_dict = {}
+    decrypt_dict = {}
+
+    # Create mapping for lowercase letters
+    for i in range(26):
+        original = chr(ord("a") + i)
+        encrypted = chr(ord("a") + ((i + shift) % 26))
+        encrypt_dict[original] = encrypted
+        decrypt_dict[encrypted] = original
+
+    # Create mapping for uppercase letters
+    for i in range(26):
+        original = chr(ord("A") + i)
+        encrypted = chr(ord("A") + ((i + shift) % 26))
+        encrypt_dict[original] = encrypted
+        decrypt_dict[encrypted] = original
+
+    return encrypt_dict, decrypt_dict
+
+
+# Function to encrypt using dictionary
+def encrypt_with_dict(message, shift):
+    encrypt_dict, _ = create_cipher_dict(shift)
+    result = []
+    for char in message:
+        if char in encrypt_dict:
+            result.append(encrypt_dict[char])
+        else:
+            result.append(char)
+    return "".join(result)
+
+
+# Function to decrypt using dictionary
+def decrypt_with_dict(message, shift):
+    _, decrypt_dict = create_cipher_dict(shift)
+    result = []
+    for char in message:
+        if char in decrypt_dict:
+            result.append(decrypt_dict[char])
+        else:
+            result.append(char)
+    return "".join(result)
+
+
+# Function to encrypt message (original method)
 def encrypt(message_list, shift):
     result = []
 
@@ -35,7 +82,7 @@ def encrypt(message_list, shift):
     return "".join(result)
 
 
-# Function to decrypt message
+# Function to decrypt message (original method)
 def decrypt(message_list, shift):
     result = []
 
