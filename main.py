@@ -79,7 +79,18 @@ def main():
         message_list = list(message)
 
         shift = input("Enter shift number (e.g. 3): ").strip()
+
+        # Check if shift is valid
+        if not shift.isdigit():
+            print("Shift must be a number.")
+            continue
+
         shift = int(shift)
+
+        # Check shift range
+        if shift < 1 or shift > 25:
+            print("Shift must be between 1 and 25.")
+            continue
 
         # Call correct function
         if choice == "e":
