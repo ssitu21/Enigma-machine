@@ -103,6 +103,12 @@ def main():
             print("\nDecrypted message:")
             print(result)
 
+        # Ask user to continue
+        again = input("\nRun again? (y/n): ").lower().strip()
+        if again != "y":
+            print("Goodbye!")
+            break
+
 
 # Run the program
 if __name__ == "__main__":
